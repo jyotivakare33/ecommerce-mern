@@ -7,9 +7,9 @@ class login extends Component {
         isOpen: false,
     };
 
-    handleChange = (event) => {
-        this.setState({value: event.target.value});
-    }
+    // handleChange = (event) => {
+    //     this.setState({email: event.target.valEmail});
+    // }
 
     openModal = () => this.setState({ isOpen: true });
 
