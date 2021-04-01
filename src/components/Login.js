@@ -5,18 +5,22 @@ import user from '../images/user.png';
 class login extends Component {
     state = {
         isOpen: false,
+        email: '',
+        password: ''
     };
 
-    // handleChange = (event) => {
-    //     this.setState({email: event.target.valEmail});
-    // }
+    handleChange = (event) => {
+        console.log('Changing value');
+        this.setState({[event.target.name]: event.target.value});
+        console.log(this.state);
+    }
 
     openModal = () => this.setState({ isOpen: true });
 
     closeModal = () => {
         this.setState({ isOpen: false })
-        const email = this.state.valEmail;
-        const password = this.state.valPassword;
+        const email = this.state.email;
+        const password = this.state.password;
         console.log(email,password);
         const request = new Request('api/sessions/', 
         {
@@ -24,7 +28,7 @@ class login extends Component {
             headers: new Headers({
                 'Content-Type': 'application/json'
             }),
-            body: JSON.stringify({"email": email,"password": password})
+            body: {"email": email,"password": password}
         });
         fetch(request).then(res => res.json()).then(json => console.log(json));
           
@@ -43,9 +47,9 @@ class login extends Component {
                     <Modal.Body>
                         <Form.Group>
                             <Form.Label>Email ID: </Form.Label>
-                            <Form.Control type="text" value={this.state.valEmail} onChange={this.handleChange} placeholder="Enter the UserName" />
+                            <Form.Control type="text" value={this.state.email} onChange={this.handleChange} placeholder="Enter the UserName" />
                             <Form.Label>Password: </Form.Label>
-                            <Form.Control type="password" value={this.state.valPassword} placeholder="Enter the Password" />
+                            <Form.Control type="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter the Password" />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
