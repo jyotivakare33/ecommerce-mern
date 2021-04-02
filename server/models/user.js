@@ -17,22 +17,22 @@ const userSchema = new Schema({
     address:{
         houseNo: {
             type: Number,
-            required: true,
+            //required: true,
             unique: true
         },
         Locality: {
             type: String,
-            required: true,
+            //required: true,
             unique: true
         },
         City:{
             type: String,
-            required: true,
+            //required: true,
             unique: true
         },
         Pincode:{
             type: Number,
-            required: true,
+            //required: true,
             unique: true
         },
     },
