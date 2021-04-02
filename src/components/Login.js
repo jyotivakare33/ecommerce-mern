@@ -28,7 +28,7 @@ class login extends Component {
             headers: new Headers({
                 'Content-Type': 'application/json'
             }),
-            body: {"email": email,"password": password}
+            body: JSON.stringify({"email": email,"password": password})
         });
         fetch(request).then(res => res.json()).then(json => console.log(json));
           
@@ -47,9 +47,9 @@ class login extends Component {
                     <Modal.Body>
                         <Form.Group>
                             <Form.Label>Email ID: </Form.Label>
-                            <Form.Control type="text" value={this.state.email} onChange={this.handleChange} placeholder="Enter the UserName" />
+                            <Form.Control name="email" type="text" value={this.state.email} onChange={this.handleChange} placeholder="johndoe@xyz.com" />
                             <Form.Label>Password: </Form.Label>
-                            <Form.Control type="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter the Password" />
+                            <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter the Password" />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
