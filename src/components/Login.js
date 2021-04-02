@@ -6,7 +6,8 @@ class login extends Component {
     state = {
         isOpen: false,
         email: '',
-        password: ''
+        password: '',
+        requestType: ''
     };
 
     handleChange = (event) => {
@@ -17,11 +18,32 @@ class login extends Component {
 
     openModal = () => this.setState({ isOpen: true });
 
-    closeModal = () => {
+    closeModalSignup = () => {
         this.setState({ isOpen: false })
         const email = this.state.email;
         const password = this.state.password;
         console.log(email,password);
+        
+        const request = new Request('api/users/', 
+        {
+            method: 'POST',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+                "Access-Control-Allow-Origin" : "*", 
+                "Access-Control-Allow-Credentials" : true 
+            }),
+            body: JSON.stringify({"email": email,"password": password})
+        });
+        fetch(request).then(res => res.json()).then(json => console.log(json));
+          
+    };
+
+    closeModalLogin = () => {
+        this.setState({ isOpen: false })
+        const email = this.state.email;
+        const password = this.state.password;
+        console.log(email,password);
+        
         const request = new Request('api/sessions/', 
         {
             method: 'POST',
@@ -55,8 +77,11 @@ class login extends Component {
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="primary" type="submit" onClick={this.closeModal}>
+                        <Button  variant="primary" type="submit" onClick={this.closeModalLogin}>
                             Submit
+                        </Button>
+                        <Button  variant="primary" type="submit" onClick={this.closeModalSignup}>
+                            Sign Up
                         </Button>
                     </Modal.Footer>
                 </Modal>
