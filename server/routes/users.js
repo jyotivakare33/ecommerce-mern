@@ -36,9 +36,11 @@ router.post('/', (req, res) => {
 
         userCredential.save().then(() => {
             const user = new User({ _id: userCredential.id, email });
+            console.log('Before creating User');
             user.save().then(() => {
                 res.status(201).send({ id: userCredential.id });
             });
+            console.log('User created');
         });
     }).catch(() => {
         res.status(500).send({ error: "Internal Server Error" });
