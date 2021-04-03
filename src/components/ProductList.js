@@ -11,7 +11,14 @@ class ProductList extends Component {
     }
 
     componentDidMount() {
-        fetch('https://fakestoreapi.com/products/')
+        const request = new Request('api/products/men/', 
+        {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+        });
+        fetch(request)
             .then((response) => response.json())
             .then((repos) => {
                 this.setState({
@@ -27,9 +34,9 @@ class ProductList extends Component {
             </Col>
         ));
         return (
-            <Container fluid>
+            <div className= "product_cards">
                 <Row>{peopleCards}</Row>
-            </Container>
+            </div>
         );
     }
 }

@@ -1,13 +1,41 @@
+import {withRouter} from 'react-router-dom';
 import Magnifier from 'react-magnifier';
 import { Button } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 class ProductDetail extends Component {
+
+    constructor(props) {
+        super(props);
+        this.routeParam = props.match.params.id;
+      }
+      
+    
     state = {
-        productId: '',
+        productId:'',
         pricePerUnit: '',
-        qty: ''
+        qty: '',
+        repos: [],
+
     };
+
+
+    componentDidMount() {
+        const request = new Request('api/productid/'+this.props.match.params.id , 
+        {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+        });
+        fetch(request)
+            .then((response) => response.json())
+            .then((repos) => {
+                this.setState({
+                    repos,
+                });
+            });
+    }
 
     handleChange = (event) => {
         console.log('Changing value');
@@ -70,4 +98,4 @@ class ProductDetail extends Component {
 }
 
 
-export default ProductDetail;
+export default withRouter(ProductDetail);

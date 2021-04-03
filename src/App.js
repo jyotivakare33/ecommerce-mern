@@ -13,7 +13,7 @@ function App() {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/men" exact component={ShopMen} />
-                <Route path="/detail" exact component={Detail} />
+                <Route path="/:id" exact component={Detail} />
                 <Route path="/checkout" exact component={Checkout} />
                 <Route path="/address" exact component={Address} />
                 <Route path="/payment" exact component={Payment} />
@@ -21,5 +21,6 @@ function App() {
         </Router>
     );
 }
+
 
 export default App;

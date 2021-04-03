@@ -122,6 +122,7 @@ input {
 
 .product_title {
   max-height: 150px;
+  font-weight: bolder;
 }
 
 .product_detail {
@@ -227,4 +228,23 @@ input {
   font-weight: 600;
   border-radius: 12px;
   color: white;
+}
+
+.card-text {
+  white-space: nowrap;
+    width: 218px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.product_cards {
+  width:75%;
+  float:right;
+}
+
+.badge {
+  position: absolute;
+  top:2rem;
+  padding:1.25rem;
+  font-size: 10px;
 }
