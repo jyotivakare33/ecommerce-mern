@@ -73,8 +73,8 @@ router.put('/me', auth.authenticate, (req, res) => {
     const updateQuery = {};
     (firstName !== undefined) && (updateQuery.firstName = firstName);
     (lastName !== undefined) && (updateQuery.lastName = lastName);
-    (address !== undefined) && (updateQuery.address = lastName);
-    (email !== undefined) && (updateQuery.email = lastName);
+    (address !== undefined) && (updateQuery.address = address);
+    (email !== undefined) && (updateQuery.email = email);
 
     User.updateOne({ _id: req.session.userId }, updateQuery).then(() => {
         res.status(204).send();
