@@ -136,4 +136,63 @@ router.get('/girls',(req,res) => {
 
 })
 
+//Get product list by brand
+//Category can be Men, Women, Boys, Girls, Unisex
+router.get('/category/:category/brand/:brandName/sortby/:sortType',(req,res) => {
+    if (!req.body) {
+        res.status(400).send({error: "Empty body sent in request"});
+        return;
+    }
+    const brandName = req.params.brandName;
+    const category = req.params.category;
+    const sortType = req.params.sortType;
+    var sortObject = {};
+    if(sortType === 'inc')
+    {
+        sortObject = {$orderby: { variant_price : 1 }};
+    }
+    else if(sortType === 'dec')
+    {
+        sortObject = {$orderby: { variant_price : -1 }};
+    }
+    
+    Product.find({$and: [ { ideal_for: category }, { brand: brandName } ] }, sortObject).then(product => {
+        if(product)
+        {
+            res.status(201).send(product);
+        }
+        else
+        {
+            res.status(201).send({result:'Product Not Found in this category'});
+        }
+        
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+
+})
+
+router.get('/brand/:brandName',(req,res) => {
+    if (!req.body) {
+        res.status(400).send({error: "Empty body sent in request"});
+        return;
+    }
+    const brandName = req.params.brandName;
+    Product.find({ brand: brandName }).then(product => {
+        if(product)
+        {
+            res.status(201).send(product);
+        }
+        else
+        {
+            res.status(201).send({result:'Product Not Found in Girls'});
+        }
+        
+    }).catch((err) => {
+        res.status(500).send(err);
+    });
+
+})
+
+
 module.exports = router;

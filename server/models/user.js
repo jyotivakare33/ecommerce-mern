@@ -12,28 +12,38 @@ const userSchema = new Schema({
         required: true,
         unique: true
     },
+    Mobile: {
+        type: Number,
+        //required: true,
+        //unique: true
+    },
     firstName: String,
     lastName: String,
     address:{
         houseNo: {
             type: Number,
             //required: true,
-            unique: true
+            //unique: true
         },
         Locality: {
             type: String,
             //required: true,
-            unique: true
+            //unique: true
         },
         City:{
             type: String,
             //required: true,
-            unique: true
+            //unique: true
+        },
+        State:{
+            type: String,
+            //required: true,
+            //unique: true
         },
         Pincode:{
             type: Number,
             //required: true,
-            unique: true
+            //unique: true
         },
     },
     createdAt: {
