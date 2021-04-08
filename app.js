@@ -8,6 +8,7 @@ const app = express();
 //app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
 
 const api = require('./server/api');
+const list = require('./server/list');
 const db = require('./server/db');
 
 //Configure .env
@@ -33,6 +34,16 @@ db.connect({
         resave: false,
         saveUninitialized: true,
     }), api);
+
+    app.use('/list', session({
+        genid() {
+            return genuuid() // use UUIDs for session IDs
+        },
+        store: new MongoStore({ client: db.getClient() }),
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    }), list);
 
     //Handle non-api routes with static build folder
     app.use(express.static(path.join(__dirname, 'build')));

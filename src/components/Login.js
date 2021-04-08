@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import React, { Component } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import user from '../images/user.png';
@@ -7,55 +8,55 @@ class login extends Component {
         isOpen: false,
         email: '',
         password: '',
-        requestType: ''
+        requestType: '',
     };
 
     handleChange = (event) => {
         console.log('Changing value');
-        this.setState({[event.target.name]: event.target.value});
+        this.setState({ [event.target.name]: event.target.value });
         console.log(this.state);
-    }
+    };
 
     openModal = () => this.setState({ isOpen: true });
 
     closeModalSignup = () => {
-        this.setState({ isOpen: false })
-        const email = this.state.email;
-        const password = this.state.password;
-        console.log(email,password);
-        
-        const request = new Request('api/users/', 
-        {
+        this.setState({ isOpen: false });
+        const { email } = this.state;
+        const { password } = this.state;
+        console.log(email, password);
+
+        const request = new Request('api/users/', {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin" : "*", 
-                "Access-Control-Allow-Credentials" : true 
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
             }),
-            body: JSON.stringify({"email": email,"password": password})
+            body: JSON.stringify({ email, password }),
         });
-        fetch(request).then(res => res.json()).then(json => console.log(json));
-          
+        fetch(request)
+            .then((res) => res.json())
+            .then((json) => console.log(json));
     };
 
     closeModalLogin = () => {
-        this.setState({ isOpen: false })
-        const email = this.state.email;
-        const password = this.state.password;
-        console.log(email,password);
-        
-        const request = new Request('api/sessions/', 
-        {
+        this.setState({ isOpen: false });
+        const { email } = this.state;
+        const { password } = this.state;
+        console.log(email, password);
+
+        const request = new Request('api/sessions/', {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin" : "*", 
-                "Access-Control-Allow-Credentials" : true 
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials': true,
             }),
-            body: JSON.stringify({"email": email,"password": password})
+            body: JSON.stringify({ email, password }),
         });
-        fetch(request).then(res => res.json()).then(json => console.log(json));
-          
+        fetch(request)
+            .then((res) => res.json())
+            .then((json) => console.log(json));
     };
 
     render() {
@@ -71,16 +72,28 @@ class login extends Component {
                     <Modal.Body>
                         <Form.Group>
                             <Form.Label>Email ID: </Form.Label>
-                            <Form.Control name="email" type="text" value={this.state.email} onChange={this.handleChange} placeholder="johndoe@xyz.com" />
+                            <Form.Control
+                                name="email"
+                                type="text"
+                                value={this.state.email}
+                                onChange={this.handleChange}
+                                placeholder="johndoe@xyz.com"
+                            />
                             <Form.Label>Password: </Form.Label>
-                            <Form.Control name="password" type="password" value={this.state.password} onChange={this.handleChange} placeholder="Enter the Password" />
+                            <Form.Control
+                                name="password"
+                                type="password"
+                                value={this.state.password}
+                                onChange={this.handleChange}
+                                placeholder="Enter the Password"
+                            />
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button  variant="primary" type="submit" onClick={this.closeModalLogin}>
+                        <Button variant="primary" type="submit" onClick={this.closeModalLogin}>
                             Submit
                         </Button>
-                        <Button  variant="primary" type="submit" onClick={this.closeModalSignup}>
+                        <Button variant="primary" type="submit" onClick={this.closeModalSignup}>
                             Sign Up
                         </Button>
                     </Modal.Footer>

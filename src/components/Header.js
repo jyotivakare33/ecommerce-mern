@@ -7,17 +7,17 @@ function Header() {
         <div>
             <header>
                 <img src={logo} className="logo" alt="logo" />
-                <a href="/men" className="nav-links">
+                <a href="/list/men" className="nav-links">
                     Men
                 </a>
-                <a href="/" className="nav-links">
+                <a href="/list/women" className="nav-links">
                     Women
                 </a>
-                <a href="/" className="nav-links">
-                    Electronics
+                <a href="/list/boys" className="nav-links">
+                    Boys
                 </a>
-                <a href="/" className="nav-links">
-                    Jewellery
+                <a href="/list/girls" className="nav-links">
+                    Girls
                 </a>
                 <Login />
                 <a href="/checkout">

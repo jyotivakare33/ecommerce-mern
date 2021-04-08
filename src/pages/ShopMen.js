@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import ProductList from '../components/ProductList';
 
-function Reviews() {
+function ShopMen() {
     return (
         <div>
             <Header />
@@ -10,4 +10,4 @@ function Reviews() {
     );
 }
 
-export default Reviews;
+export default ShopMen;

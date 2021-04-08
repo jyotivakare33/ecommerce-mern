@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import PeopleCard from './PeopleCard';
-
 class ProductList extends Component {
+    
     constructor(props) {
         super(props);
         this.state = {
@@ -11,11 +11,10 @@ class ProductList extends Component {
     }
 
     componentDidMount() {
-        const request = new Request('api/products/men/', 
-        {
+        const request = new Request(`api/products/${this.props.match.params.type}`, {
             method: 'GET',
             headers: new Headers({
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
             }),
         });
         fetch(request)
@@ -26,6 +25,8 @@ class ProductList extends Component {
                 });
             });
     }
+      
+
 
     render() {
         const peopleCards = this.state.repos.map((person) => (
@@ -34,7 +35,7 @@ class ProductList extends Component {
             </Col>
         ));
         return (
-            <div className= "product_cards">
+            <div className="product_cards">
                 <Row>{peopleCards}</Row>
             </div>
         );

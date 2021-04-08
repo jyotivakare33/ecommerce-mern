@@ -5,7 +5,7 @@ function CheckoutCart() {
     return (
         <div>
             <Breadcrumb ClassName="breadcrumb">
-                <Breadcrumb.Item active>Home</Breadcrumb.Item>
+                <Breadcrumb.Item active>Checkout</Breadcrumb.Item>
                 <Breadcrumb.Item href="/address">Add Address</Breadcrumb.Item>
                 <Breadcrumb.Item href="/payment">Payment</Breadcrumb.Item>
             </Breadcrumb>

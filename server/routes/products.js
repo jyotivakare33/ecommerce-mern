@@ -25,7 +25,7 @@ router.get('/',(req,res) => {
 })
 
 //Get a product with product ID
-router.get('productid/:productId',(req,res) => {
+router.get('/productid/:productId',(req,res) => {
     if (!req.body) {
         res.status(400).send({error: "Empty body sent in request"});
         return;

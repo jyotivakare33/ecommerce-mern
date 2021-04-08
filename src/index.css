@@ -131,10 +131,8 @@ input {
 }
 
 .product_info {
-  display: inline;
-  top: 106px;
-  margin-left: 30px;
-  position: absolute;
+  display: inline-flex;
+  margin: 100px;
 }
 
 .description {
@@ -142,22 +140,27 @@ input {
   color: grey;
 }
 
+.details {
+  top: 200px;
+  color: grey;
+}
+
 .bag {
-  top: 350px;
+  top: 450px;
 }
 
 .price {
-  top: 200px;
+  top: 330px;
   font-weight: 500;
   font-size: 30px;
 }
 
 .size {
-  top: 250px;
+  top: 380px;
 }
 
 .select {
-  top: 280px;
+  top: 380px;
   border-radius: 50%;
   margin-left: 30px;
 }
@@ -247,4 +250,51 @@ input {
   top:2rem;
   padding:1.25rem;
   font-size: 10px;
+}
+
+.margin-40 {
+  margin-left: 40px;
+  width: 60%;
+}
+
+.brand_name {
+  color: #282c3f;
+    padding: 0 20px 0 0;
+    font-size: 35px;
+    font-weight: 800;
+    line-height: 1;
+    text-transform: uppercase;
+}
+.title {
+  color: #535665;
+    padding: 5px 20px 14px 0;
+    font-size: 28px;
+    opacity: .8;
+    font-weight: 400;
+}
+
+.price {
+  margin-left: 20px;
+  color: grey;
+  font-size: medium;
+}
+
+.actual_price {
+  color: #282c3f;
+    font-weight: 700;
+    font-size:30px;
+}
+
+.taxes {
+  color: #03a685;
+    font-weight: 700;
+    font-size: 16px;
+    display: block;
+}
+
+.options {
+  color: #282c3f;
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
 }
