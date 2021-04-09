@@ -52,7 +52,7 @@ router.get('/men',(req,res) => {
         res.status(400).send({error: "Empty body sent in request"});
         return;
     }
-    Product.find({$or: [ { ideal_for: 'Men' }, { ideal_for: 'Unisex' } ] }).limit(25).then(product => {
+    Product.find({ ideal_for: 'Men' }).limit(25).then(product => {
         if(product)
         {
             res.status(201).send(product);

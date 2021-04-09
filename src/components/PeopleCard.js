@@ -3,7 +3,7 @@ import { Card, Badge } from 'react-bootstrap';
 
 class PeopleCard extends Component {
     render() {
-        const { title, variantPrice, images, brand, productId } = this.props.person;
+        const { title, variant_price, images, brand, productId } = this.props.person;
         return (
             <Card className="product_card" style={{ width: '19rem' }}>
                 <Card.Img variant="top" className="product_image" src={images} />
@@ -17,7 +17,7 @@ class PeopleCard extends Component {
                             {title}
                         </Card.Link>
                     </Card.Text>
-                    <Card.Text>Rs. {variantPrice}</Card.Text>
+                    <Card.Text>Rs. {variant_price}</Card.Text>
                 </Card.Body>
             </Card>
         );
