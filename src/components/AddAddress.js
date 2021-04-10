@@ -18,20 +18,30 @@ class Address extends Component
         console.log(this.state);
     };
 
-    addAddress = () => {
+    addAddress = (event) => {
         //this.setState({ isOpen: false });
-        const { Name,Mobile,Pincode,Locality,City,State} = this.state;
+        event.preventDefault();
+        const { Name,Mobile,Address,Pincode,Locality,City,State} = this.state;
         //const { password } = this.state;
-        console.log( Name,Mobile,Pincode,Locality,City,State);
+        console.log( Name,Mobile,Address,Pincode,Locality,City,State);
 
         const request = new Request('api/users/me', {
             method: 'PUT',
             headers: new Headers({
                 'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*',
-                'Access-Control-Allow-Credentials': true,
+                //'Access-Control-Allow-Origin': '*',
+                //'Access-Control-Allow-Credentials': true,
             }),
-            body: JSON.stringify({Name,Mobile,Pincode,Locality,City,State}),
+            body: JSON.stringify({
+                Mobile:Mobile,
+                address:{
+                    Name:Name,
+                    houseNo:Address,
+                    Pincode:Pincode,
+                    Locality:Locality,
+                    City:City,
+                    State:State}
+                })
         });
         fetch(request)
             .then((res) => res.json())
@@ -83,7 +93,7 @@ class Address extends Component
                                         <br />
                                         <br />
                                         <label for="lname">Address:</label>
-                                        <input type="text" id="lname" name="lname" />
+                                        <input type="text" id="lname" name="Address" onChange={this.handleChange} />
                                         <br />
                                         <br />
                                         <label for="lname">Locality/Town:</label>
