@@ -27,8 +27,6 @@ class ProductList extends Component {
             });
     }
       
-
-
     render() {
         const peopleCards = this.state.repos.map((person) => (
             <Col sm="3">
