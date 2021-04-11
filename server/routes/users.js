@@ -77,7 +77,7 @@ router.put('/me', auth.authenticate, (req, res) => {
     (email !== undefined) && (updateQuery.email = email);
 
     User.updateOne({ _id: req.session.userId }, updateQuery).then(() => {
-        res.status(204).send({msg:'Updated'});
+        res.status(201).send({msg:'Updated'});
     }).catch((e) => {
         res.status(500).send({ error: e });
     });
