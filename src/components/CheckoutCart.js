@@ -8,7 +8,7 @@ class checkoutCart extends Component
         productId: '',
         pricePerUnit: '',
         qty: '',
-        cart: [],
+        cart: {},
         cartSize: ''
     };
     
@@ -22,10 +22,12 @@ class checkoutCart extends Component
         fetch(request)
             .then((response) => response.json())
             .then((cart) => {
-                this.setState({cartSize: cart.cartItems.length});
+                console.log(cart)
+                
                 this.setState({
                     cart,
                 });
+                this.setState({cartSize: cart.cartItems.length});
             });
     }
 
@@ -69,11 +71,11 @@ class checkoutCart extends Component
 
     render()
     {
-        console.log('CART DATA' + this.state.cartSize);
+        console.log(this.state.cart);
 
-        for(var i=0; i<this.state.cartSize; i++)
+        for(var i=0; i<this.state.cart.cartItems.length; i++)
         {
-            this.showCartItem(this.state.cart.cartItem[i]);
+            this.showCartItem(this.state.cart.cartItems[i]);
         }
         return (
             
