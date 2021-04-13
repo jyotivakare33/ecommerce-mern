@@ -52,7 +52,7 @@ class Address extends Component
     {
         return (
             <div>
-                <Breadcrumb ClassName="breadcrumb">
+                <Breadcrumb className="breadcrumb">
                     <Breadcrumb.Item href="/checkout">Home</Breadcrumb.Item>
                     <Breadcrumb.Item href="/address" active>
                         {' '}

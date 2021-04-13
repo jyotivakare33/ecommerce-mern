@@ -13,6 +13,7 @@ router.get('/me',(req,res) => {
         return;
     }
     const sessionId = req.session.id;
+    console.log(sessionId);
     Cart.findOne({ sessionId: sessionId }).then(cart => {
         if(cart)
         {

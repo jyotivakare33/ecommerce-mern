@@ -62,7 +62,7 @@ class login extends Component {
     render() {
         return (
             <>
-                <a href="#" onClick={this.openModal} alt="">
+                <a href="#" onClick={this.openModal}>
                     <img src={user} alt="" className="header-right" />
                 </a>
                 <Modal show={this.state.isOpen} onHide={this.closeModal}>
