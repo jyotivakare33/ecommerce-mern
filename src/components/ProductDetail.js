@@ -34,19 +34,20 @@ class ProductDetail extends Component {
         console.log(this.state);
     };
 
+
     openModal = () => this.setState({ isOpen: true });
 
     addToCart = () => {
-        this.setState({ isOpen: false });
-        const { email } = this.state;
-        const { password } = this.state;
-        console.log(email, password);
+        const pricePerUnit = this.state.repos[0].variant_price;
+        const qty = 2;
+        const productId = this.state.repos[0].product_id;
+        console.log(productId,qty,pricePerUnit);
         const request = new Request('api/carts/', {
             method: 'POST',
             headers: new Headers({
                 'Content-Type': 'application/json',
             }),
-            body: JSON.stringify({ cartItem: { productId: String, qty: Number, pricePerUnit: Number } }),
+            body: JSON.stringify({ cartItem: { productId, qty, pricePerUnit} }),
         });
         fetch(request)
             .then((res) => res.json())
@@ -55,6 +56,7 @@ class ProductDetail extends Component {
 
     render() {
         const peopleCards = this.state.repos.map((person) => (
+            
             <div className="product_info">
                 <Magnifier src={person.images} width={700} />
                 <div>
