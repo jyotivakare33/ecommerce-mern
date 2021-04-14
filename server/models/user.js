@@ -20,8 +20,13 @@ const userSchema = new Schema({
     firstName: String,
     lastName: String,
     address:{
+        Name: {
+            type: String,
+            //required: true,
+            //unique: true
+        },
         houseNo: {
-            type: Number,
+            type: String,
             //required: true,
             //unique: true
         },

@@ -13,6 +13,7 @@ router.get('/me',(req,res) => {
         return;
     }
     const sessionId = req.session.id;
+    console.log(sessionId);
     Cart.findOne({ sessionId: sessionId }).then(cart => {
         if(cart)
         {
@@ -50,18 +51,21 @@ router.post('/', (req, res) => {
         if (cart) 
         {
             console.log('Cart already exists');
-            cart.cartItems.push(cartItem);
+            console.log(cart);
+            cart.cartItems.push({productId: cartItem.productId, qty:cartItem.qty, pricePerUnit:cartItem.pricePerUnit});
             cart.totalAmount = cart.totalAmount + cartItem.qty*cartItem.pricePerUnit;
             cart.save().then(() => {
-                res.status(201).send('Item Added to cart');
+                res.status(201).send({ id: sessionId });
             }).catch(() => {
-                res.status(500).send("Error while adding item to cart" );
+                res.status(500).send({err: "Error while adding item to cart"});
             });
             
             return;
         }
 
        //if cart doesn't exist
+       console.log('Cart DOES NOT exists');
+       console.log(cartItem)
         const cartEntity = new Cart({ sessionId, cartItems: cartItem, totalAmount:cartItem.qty*cartItem.pricePerUnit});
 
         cartEntity.save().then(() => {

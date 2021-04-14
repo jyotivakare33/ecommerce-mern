@@ -11,7 +11,8 @@ class ProductList extends Component {
     }
 
     componentDidMount() {
-        const request = new Request(`api/products/${this.props.match.params.type}`, {
+        //const request = new Request(`api/products/${this.props.match.params.type}`, {
+        const request = new Request('api/products/men', {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -26,8 +27,6 @@ class ProductList extends Component {
             });
     }
       
-
-
     render() {
         const peopleCards = this.state.repos.map((person) => (
             <Col sm="3">
