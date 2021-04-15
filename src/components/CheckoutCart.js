@@ -32,16 +32,16 @@ class CheckoutCart extends Component
             });
     }
 
-    showCartItem(cartItem)
+    showCartItem(cartItem , cart)
     {
         
         return(
-            <div className="flex-container">
+            <div >
                     <div className="card mb-3 checkout-card flex-child">
                         <div className="row no-gutters">
                             <div className="col-md-4">
                                 <img
-                                    src="https://assets.myntassets.com/w_111,h_148,q_95,c_limit,fl_progressive/h_148,q_95,w_111/v1/assets/images/1700871/2020/1/22/f932ae44-0fb8-4b92-b7bc-f1756253294b1579692118186-HRX-by-Hrithik-Roshan-Men-Teal-Blue-Printed-T-shirt-90515796-1.jpg"
+                                    src={cartItem.images}
                                     className="card-img"
                                     alt="..."
                                 />
@@ -49,9 +49,9 @@ class CheckoutCart extends Component
                             <div className="col-md-8 checkout-body">
                                 <div className="card-body">
                                     <div>
-                                        <h5 className="card-title">Brand Name</h5>
+                                        <h5 className="card-title">{cartItem.brand}</h5>
                                     </div>
-                                    <p className="card-text">Product Detail</p>
+                                    <p className="card-text">{cartItem.title}</p>
                                     <span>
                                         <strong>Rs: {cartItem.pricePerUnit}</strong>
                                     </span>
@@ -61,9 +61,6 @@ class CheckoutCart extends Component
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className="flex-child">
-                        <Price />
                     </div>
                 </div>
 
@@ -82,12 +79,17 @@ class CheckoutCart extends Component
         return (
             
             <div>
-                <Breadcrumb className="breadcrumb">
+                <Breadcrumb>
                     <Breadcrumb.Item active>Checkout</Breadcrumb.Item>
                     <Breadcrumb.Item href="/address">Add Address</Breadcrumb.Item>
                     <Breadcrumb.Item href="/payment">Payment</Breadcrumb.Item>
                 </Breadcrumb>
-                <div>{cartItems.map(cartItem => (<div key={cartItem.productId}>{this.showCartItem(cartItem)}</div>))}</div> 
+                <div  className="flex-container">
+                <div>{cartItems.map(cartItem => (<div key={cartItem.productId}>{this.showCartItem(cartItem, this.state.cart)}</div>))}</div> 
+                <div className="flex-child">
+                        <Price cart={this.state.cart}/>
+                </div>
+                </div>
             </div>
                 
         );

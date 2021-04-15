@@ -41,6 +41,7 @@ router.post('/', (req, res) => {
     });
 });
 
+//logout
 router.delete('/me', (req, res) => {
     delete req.session.userId;
     res.status(204).send();

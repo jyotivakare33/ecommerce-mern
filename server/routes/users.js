@@ -63,9 +63,17 @@ router.get('/:userId', (req, res) => {
     });
 });
 
+router.post('/isLogged', auth.authenticate, (req, res) => {
+    if (!req.session.userId) {
+        res.send(201).send({ msg: "Not logged in"});
+    } else {
+        res.send(201).send({ msg: "logged in"});
+    }
+});
+
 router.put('/me', auth.authenticate, (req, res) => {
     if (!req.session.userId) {
-        res.send(401).send({ error: "Not logged in"});
+        res.send(401).send({ error: "Not Logged In"});
     }
 
     const { firstName, lastName, address, email } = req.body;

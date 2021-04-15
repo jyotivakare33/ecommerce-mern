@@ -4,6 +4,8 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import user from '../images/user.png';
 
 class login extends Component {
+
+
     state = {
         isOpen: false,
         email: '',
@@ -18,6 +20,8 @@ class login extends Component {
     };
 
     openModal = () => this.setState({ isOpen: true });
+    closeModal = () => this.setState({ isOpen: false });
+
 
     closeModalSignup = () => {
         this.setState({ isOpen: false });

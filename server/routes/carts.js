@@ -30,6 +30,7 @@ router.get('/me',(req,res) => {
 })
 //Add a new product to Cart
 router.post('/', (req, res) => {
+    
     if (!req.body) {
         res.status(400).send({error: "Empty body sent in request"});
         return;
@@ -52,7 +53,7 @@ router.post('/', (req, res) => {
         {
             console.log('Cart already exists');
             console.log(cart);
-            cart.cartItems.push({productId: cartItem.productId, qty:cartItem.qty, pricePerUnit:cartItem.pricePerUnit});
+            cart.cartItems.push({productId: cartItem.productId, qty:cartItem.qty, pricePerUnit:cartItem.pricePerUnit,brand:cartItem.brand,title:cartItem.title, image:cartItem.images});
             cart.totalAmount = cart.totalAmount + cartItem.qty*cartItem.pricePerUnit;
             cart.save().then(() => {
                 res.status(201).send({ id: sessionId });

@@ -7,7 +7,7 @@ const cartSchema = new Schema({
         type: String,
         required: true
     },
-    cartItems: [{ productId: String, qty: Number, pricePerUnit: Number }],
+    cartItems: [{ productId: String, qty: Number, pricePerUnit: Number, brand : String, title : String, images: String }],
     createdAt: {
         type: Date,
         default: Date.now()
