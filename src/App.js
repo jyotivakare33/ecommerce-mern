@@ -6,6 +6,7 @@ import Detail from './pages/Detail';
 import Checkout from './pages/Checkout';
 import Address from './pages/AddAddress';
 import Payment from './pages/Payment';
+import Login from './pages/Login';
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/checkout" exact component={Checkout} />
                 <Route path="/address" exact component={Address} />
                 <Route path="/payment" exact component={Payment} />
+                <Route path="/login" exact component={Login} />
                 <Route path="/list/:type" exact component={ShopMen} />
                 <Route path="/:id" exact component={Detail} />
                 <Route path="/" exact component={Home} />

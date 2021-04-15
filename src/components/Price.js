@@ -12,13 +12,17 @@ class Price extends Component {
                 'Access-Control-Allow-Credentials': true,
             }),
         });
-        fetch(request)
-            .then((res) => res.json())
-            .catch((err)=>{
-                console.log("open modal");
-              });
-          
+        fetch(request).then(res => {
+            if (res.status === 200) {
+                return (
+                    window.location = "/address"
+                );
+            } else{
+                window.location = "/login"
+            }     
+        })        
     };
+
     
     render() {
         const { totalAmount } = this.props.cart;
