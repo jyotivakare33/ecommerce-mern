@@ -251,7 +251,7 @@ input, .login-input {
 .badge {
   position: absolute;
   top:2rem;
-  padding:1.25rem;
+  padding:10px;
   font-size: 10px;
 }
 
