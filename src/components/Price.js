@@ -33,9 +33,9 @@ class Price extends Component {
             <p>Delivery Charges : Rs.450</p>
             <p>Tax Charges : Rs.450</p>
             <p>Total Charges : Rs.450</p>
-            <Button variant="info" className="checkout-add" onClick={this.isLogged}>
+            <button  className="checkout-add add_address" onClick={this.isLogged}>
                 Place Order
-            </Button>
+            </button>
         </div>
     );
     }

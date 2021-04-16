@@ -36,6 +36,7 @@ class ProductDetail extends Component {
         console.log(this.state);
     };
 
+    goToCheckout = () => {window.location = '/checkout'};
 
     openModal = () => this.setState({ isOpen: true });
 
@@ -85,13 +86,11 @@ class ProductDetail extends Component {
                         Easy 30 days returns and exchanges <br /> Try & Buy might be available
                     </p>
                     <br />
-                    <Button variant="outline-success">S</Button> <Button variant="outline-success">M</Button>{' '}
-                    <Button variant="outline-success">L</Button> <Button variant="outline-success">XL</Button> <br />
-                    { this.state.cart ? <Button variant="info" type="submit" onClick={this.addToCart}>
+                    { this.state.cart ? <button  className="add_address" type="submit" onClick={this.addToCart}>
                         Add To Cart
-                    </Button> : <Button variant="info" type="submit" href="/checkout" >
+                    </button> : <button  className="add_address" type="submit" onClick={this.goToCheckout}>
                         Go To Cart
-                    </Button> }
+                    </button> }
                 </div>
             </div>
         ));

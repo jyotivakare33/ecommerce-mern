@@ -42,6 +42,10 @@ header {
   border-bottom-color: #ee5f73;
 }
 
+a:hover {
+  color: hotpink;
+}
+
 .logo {
   height: 40px;
   margin-left: 50px;
@@ -96,7 +100,6 @@ input, .login-input {
 
 .carousel {
   height: 500px;
-  margin-top: 95px;
 }
 
 .w-100 {
@@ -215,13 +218,11 @@ input, .login-input {
 }
 
 .breadcrumb {
-  margin-top: 150px;
   width: 50%;
   margin-left: 40px;
 }
 
 .accordion {
-  margin-top: 100px;
   width: 30%;
 }
 
@@ -303,7 +304,6 @@ input, .login-input {
 }
 
 .loginPage {
-  margin-top: 150px;
   box-shadow: 0 6px 31px -2px rgb(0 0 0 / 10%);
   width: 40%;
   background-color: white;
@@ -319,5 +319,7 @@ input, .login-input {
   margin-top: 34px;
  }
 
- .main-login-div {
+ .paymentContainer {
+  margin-top: 150px;
+  width: 40%;
  }

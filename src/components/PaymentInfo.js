@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'react-bootstrap';
 import { initiatePayment }  from './Payment';
 
 class PaymentInfo extends Component {
@@ -20,15 +19,17 @@ class PaymentInfo extends Component {
     render() {
         const { totalAmount } = this.props.cart || 4000;
         return (
-            <div>
+            <div className="content main-login-div">
+                <div className="paymentContainer">
             <p>Product Price : {totalAmount} </p>
             <p>Discount : Rs.450</p>
             <p>Delivery Charges : Rs.450</p>
             <p>Tax Charges : Rs.450</p>
             <p>Total Charges : Rs.450</p>
-            <Button variant="info" className="checkout-add" onClick={this.isLogged}>
+            <button className="checkout-add add_address" onClick={this.isLogged}>
                 Pay
-            </Button>
+            </button>
+        </div>
         </div>
     );
     }

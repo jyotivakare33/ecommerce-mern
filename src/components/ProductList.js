@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import { Row, Col } from 'react-bootstrap';
 import PeopleCard from './PeopleCard';
 class ProductList extends Component {
@@ -12,7 +13,7 @@ class ProductList extends Component {
 
     componentDidMount() {
         //const request = new Request(`api/products/${this.props.match.params.type}`, {
-        const request = new Request('api/products/men', {
+        const request = new Request(`api/products/${this.props.match.params.type}`, {
             method: 'GET',
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -41,4 +42,4 @@ class ProductList extends Component {
     }
 }
 
-export default ProductList;
+export default withRouter(ProductList);

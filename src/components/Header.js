@@ -1,4 +1,4 @@
-import logo from '../images/logo.png';
+import logo from '../images/header-logo.png';
 import cart from '../images/cart.png';
 import Login from './Login';
 

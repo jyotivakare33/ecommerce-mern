@@ -1,3 +1,5 @@
+import logo from '../images/logo.png';
+
 function initiatePayment(paymentHandlers, onOrderCreateFailure) {
     const request = new Request('api/orders/', {
         method: 'POST',
@@ -13,11 +15,11 @@ function initiatePayment(paymentHandlers, onOrderCreateFailure) {
             amount: res.amount,
             currency: res.currency,
             order_id: res.rzpOrderId,
-            name: 'ecommerce',
-            image: 'https://workat.tech/images/At-144x144.png',
+            name: 'Ecommerce',
+            image: logo,
             description: 'Ecommerce clone',
             theme: {
-                color: '#276ef1',
+                color: '#ff3f6c',
             },
             modal: {
                 ondismiss: paymentHandlers.onDismiss || (() => {}),

@@ -74,7 +74,7 @@ router.get('/women',(req,res) => {
         res.status(400).send({error: "Empty body sent in request"});
         return;
     }
-    Product.find({$or: [ { ideal_for: 'Women' }, { ideal_for: 'Unisex' } ] }).then(product => {
+    Product.find({$or: [ { ideal_for: 'Women' } ] }).limit(25).then(product => {
         if(product)
         {
             res.status(201).send(product);
@@ -97,7 +97,7 @@ router.get('/boys',(req,res) => {
         res.status(400).send({error: "Empty body sent in request"});
         return;
     }
-    Product.find({'ideal_for': 'Boys'}).then(product => {
+    Product.find({'ideal_for': 'Boys'}).limit(25).then(product => {
         if(product)
         {
             res.status(201).send(product);
@@ -120,7 +120,7 @@ router.get('/girls',(req,res) => {
         res.status(400).send({error: "Empty body sent in request"});
         return;
     }
-    Product.find({ ideal_for: 'Girls' }).then(product => {
+    Product.find({ ideal_for: 'Girls' }).limit(25).then(product => {
         if(product)
         {
             res.status(201).send(product);
