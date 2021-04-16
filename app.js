@@ -9,6 +9,7 @@ const app = express();
 
 const api = require('./server/api');
 const list = require('./server/list');
+const brand = require('./server/brand');
 const db = require('./server/db');
 
 //Configure .env
@@ -44,6 +45,16 @@ db.connect({
         resave: false,
         saveUninitialized: true,
     }), list);
+
+    app.use('/brand', session({
+        genid() {
+            return genuuid() // use UUIDs for session IDs
+        },
+        store: new MongoStore({ client: db.getClient() }),
+        secret: process.env.SESSION_SECRET,
+        resave: false,
+        saveUninitialized: true,
+    }), brand);
 
     //Handle non-api routes with static build folder
     app.use(express.static(path.join(__dirname, 'build')));

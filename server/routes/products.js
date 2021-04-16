@@ -178,7 +178,7 @@ router.get('/brand/:brandName',(req,res) => {
         return;
     }
     const brandName = req.params.brandName;
-    Product.find({ brand: brandName }).then(product => {
+    Product.find({brand : { '$regex':`^${brandName}$` ,'$options' : 'i'}}).limit(25).then(product => {
         if(product)
         {
             res.status(201).send(product);

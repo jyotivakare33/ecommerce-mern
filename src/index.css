@@ -108,6 +108,9 @@ input, .login-input {
 
 .offers {
   margin: 20px;
+  margin-right: 150px;
+  margin-left: 130px;
+  margin-top:60px;
 }
 
 .carousel-control-prev-icon {

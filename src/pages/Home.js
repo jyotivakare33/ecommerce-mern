@@ -7,16 +7,13 @@ function Home() {
         <div>
             <Header />
             <Carousel />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/f41ec268-82a7-4d73-9fd9-ed3ba51ef3491608296324367-Jeans.jpg" />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/c771049f-f98c-4499-a36e-31bd6b5215521608296324405-Kurtas.jpg" />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/a94d41d4-d1fa-4357-af38-5b22aa62ccff1608296324541-Sports-shoes.jpg" />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/acb5bd78-efda-4dda-b983-fec8740ca7d41608296324492-Shirts.jpg" />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/2d738b25-8b43-49a1-874f-65118fb307fc1608296324447-Loungewear.jpg" />
-            <Offers src="https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/fe5edbf3-79dc-4db1-ad92-ca0ce23a0afd1608296324637-Trackpants.jpg" />
-            <Offers src="https://assets.myntassets.com/f_webp,w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/ddc8ed4d-be29-4fab-9f01-a864f9b1fbb61608296324196-EORS_Quick-Links.jpg" />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/06f7b0f4-db52-4635-ada9-d0f26241af891608296324589-Suits-_-blazers.jpg" />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/a5735f07-f8a1-4996-bf88-ed97121675d41608296324680-Trousers-_-Shorts.jpg" />
-            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/12/18/0e8df671-bb83-4d9c-97be-7276fc14f6581608296717732-Sarees.jpg" />
+            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/7/23/aa2d33c3-e2ff-49ea-9e7d-d5eed1b2e9d31595496205200-Sangria.jpg" href="brand/sangria" />
+            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/7/23/88049f61-7293-42ad-9b0e-f65255a1595b1595496205059-Anouk.jpg" href="brand/anouk" />
+            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/7/17/137c7c37-f038-4113-a56c-c6137f2f969f1594984508589-Vishudh.jpg" href="brand/vishudh" />
+            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/8/31/814b8ff4-1dec-4a6e-86b8-c26f5c40fe4c1598892518923-Biba.jpg" href="brand/biba" />
+            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/8/31/e72c82f2-cfd5-4f9a-b1b0-ba9e2b3e51251598892519506-W.jpg" href="brand/w" />
+            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/5/29/1e487167-0f78-48ea-b47e-abfb099bbdfb1590740530724-Sassafras.jpg" href="brand/sassafras" />
+            <Offers src="https://assets.myntassets.com/w_196,c_limit,fl_progressive,dpr_2.0/assets/images/2020/8/14/1bca9470-d861-41c8-93e6-6cac31c8d6661597408345961-J-J.jpg" href="brand/Jack & Jones" />
         </div>
     );
 }
