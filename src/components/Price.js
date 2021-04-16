@@ -13,7 +13,7 @@ class Price extends Component {
             }),
         });
         fetch(request).then(res => {
-            if (res.status === 200) {
+            if (res.status === 201) {
                 return (
                     window.location = "/address"
                 );
@@ -25,7 +25,7 @@ class Price extends Component {
 
     
     render() {
-        const { totalAmount } = this.props.cart;
+        const { totalAmount } = this.props.cart || 4000;
         return (
             <div>
             <p>Product Price : {totalAmount} </p>

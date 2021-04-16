@@ -101,7 +101,7 @@ class LoginPage extends Component {
                         <div className="content">
 
                         <button type="submit" className="add_address" onClick={this.closeModalLogin}>
-                            Submit </button>
+                            Login </button>
                         <button type="submit" className="add_address" onClick={this.closeModalSignup}>
                             SignUp
                         </button>

@@ -43,9 +43,14 @@ class Address extends Component
                     State:State}
                 })
         });
-        fetch(request)
-            .then((res) => res.json())
-            .then((json) => console.log(json));
+        fetch(request).then(res => {
+            if (res.status === 201) {
+                return (
+                    window.location = "/payment"
+                );
+            } else{
+                window.location = "/address"
+        }}); 
     };
 
     render()
