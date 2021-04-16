@@ -3,6 +3,15 @@ import { initiatePayment }  from './Payment';
 
 class PaymentInfo extends Component {
 
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            cart: {},
+            
+        };
+    }
+    
     isLogged = () => {
         const paymentHandlers = {
             onSuccess: (options) =>{},
@@ -15,9 +24,27 @@ class PaymentInfo extends Component {
         initiatePayment(paymentHandlers,onOrderCreateFailure);
 
     }
+
+    componentDidMount() {
+        const request = new Request('api/carts/me', {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+        });
+        fetch(request)
+            .then((response) => response.json())
+            .then((cart) => {
+                console.log(cart)
+                document.getElementsByClassName("cart-number")[0].innerHTML = cart.cartItems.length;
+                this.setState({
+                    cart,
+                });
+            });
+    }
     
     render() {
-        const { totalAmount } = this.props.cart || 4000;
+        const { totalAmount } = this.state.cart || 4000;
         return (
             <div className="content main-login-div">
                 <div className="paymentContainer">
@@ -25,9 +52,9 @@ class PaymentInfo extends Component {
             <p>Discount : Rs.450</p>
             <p>Delivery Charges : Rs.450</p>
             <p>Tax Charges : Rs.450</p>
-            <p>Total Charges : Rs.450</p>
+            <p>Total Charges : {totalAmount + 450 + 450 + 450}</p>
             <button className="checkout-add add_address" onClick={this.isLogged}>
-                Pay
+                Pay {totalAmount + 450 + 450 + 450}
             </button>
         </div>
         </div>
