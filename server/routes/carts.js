@@ -52,9 +52,23 @@ router.post('/', (req, res) => {
         if (cart) 
         {
             console.log('Cart already exists');
-            console.log(cart);
-            cart.cartItems.push({productId: cartItem.productId, qty:cartItem.qty, pricePerUnit:cartItem.pricePerUnit,brand:cartItem.brand,title:cartItem.title, image:cartItem.images});
-            cart.totalAmount = cart.totalAmount + cartItem.qty*cartItem.pricePerUnit;
+            var oldQty ;
+            for (let i = 0; i < cart.cartItems.length; i++) { 
+                if(cart.cartItems[i].productId === cartItem.productId)
+                {
+                    oldQty = cart.cartItems[i].qty;
+                    console.log(oldQty);
+                    cart.cartItems[i].qty++;
+                    cart.totalAmount = cart.totalAmount + cart.cartItems[i].qty*cart.cartItems[i].pricePerUnit - oldQty*cart.cartItems[i].pricePerUnit;
+                    
+                } else {
+                    console.log(cartItem);
+                    console.log("cartitems qty");
+                    cart.cartItems.push({productId: cartItem.productId, qty:1, pricePerUnit:cartItem.pricePerUnit,brand:cartItem.brand,title:cartItem.title, images:cartItem.images});
+                    console.log(cart.cartItems);
+                    cart.totalAmount = cart.totalAmount + cartItem.qty*cartItem.pricePerUnit;
+                }
+            }
             cart.save().then(() => {
                 res.status(201).send({ id: sessionId });
             }).catch(() => {

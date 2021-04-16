@@ -30,11 +30,11 @@ class Price extends Component {
             <div>
             <p>Product Price : {totalAmount} </p>
             <p>Discount : Rs.450</p>
-            <p>Delivery Charges : Rs.450</p>
-            <p>Tax Charges : Rs.450</p>
-            <p>Total Charges : Rs.450</p>
-            <button  className="checkout-add add_address" onClick={this.isLogged}>
-                Place Order
+            <p>Delivery Charges : Rs.45</p>
+            <p>Tax Charges : Rs.250</p>
+            <p>Total Charges : {totalAmount + 450 + 45 + 250}</p>
+            <button className="checkout-add add_address" onClick={this.isLogged}>
+                Pay {totalAmount + 450 + 250 + 45}
             </button>
         </div>
     );

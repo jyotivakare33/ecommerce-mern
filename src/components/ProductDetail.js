@@ -49,7 +49,7 @@ class ProductDetail extends Component {
         const brand = this.state.repos[0].brand;
         const title = this.state.repos[0].title;
         const images = this.state.repos[0].images;
-        console.log(productId,qty,pricePerUnit);
+        console.log(this.state.repos[0].images);
         const request = new Request('api/carts/', {
             method: 'POST',
             headers: new Headers({

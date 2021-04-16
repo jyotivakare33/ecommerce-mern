@@ -1,9 +1,40 @@
+import React, { Component } from 'react';
 import logo from '../images/header-logo.png';
 import cart from '../images/cart.png';
 import Login from './Login';
 import { Badge } from 'react-bootstrap';
 
-function Header() {
+class Header extends Component {
+
+    constructor(props)
+    {
+        super(props);
+        this.state = {
+            cart: {},
+            
+        };
+    }
+
+    componentDidMount() {
+        const request = new Request('api/carts/me', {
+            method: 'GET',
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            }),
+        });
+        fetch(request)
+            .then((response) => response.json())
+            .then((cart) => {
+                console.log(cart)
+                if(cart.cartItems !== undefined) {
+                    document.getElementsByClassName("cart-number")[0].innerHTML = cart.cartItems.length;
+                }
+                this.setState({
+                    cart,
+                });
+            });
+    }
+    render() {
     return (
         <div>
             <header>
@@ -31,6 +62,7 @@ function Header() {
             </header>
         </div>
     );
+    }
 }
 
 export default Header;

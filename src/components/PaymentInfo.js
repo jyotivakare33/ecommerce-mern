@@ -50,11 +50,11 @@ class PaymentInfo extends Component {
                 <div className="paymentContainer">
             <p>Product Price : {totalAmount} </p>
             <p>Discount : Rs.450</p>
-            <p>Delivery Charges : Rs.450</p>
-            <p>Tax Charges : Rs.450</p>
-            <p>Total Charges : {totalAmount + 450 + 450 + 450}</p>
+            <p>Delivery Charges : Rs.45</p>
+            <p>Tax Charges : Rs.250</p>
+            <p>Total Charges : {totalAmount + 450 + 250 + 45}</p>
             <button className="checkout-add add_address" onClick={this.isLogged}>
-                Pay {totalAmount + 450 + 450 + 450}
+                Pay {totalAmount + 450 + 250 + 45}
             </button>
         </div>
         </div>
