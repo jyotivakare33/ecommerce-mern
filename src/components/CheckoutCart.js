@@ -25,7 +25,7 @@ class CheckoutCart extends Component
             .then((response) => response.json())
             .then((cart) => {
                 console.log(cart)
-                
+                document.getElementsByClassName("cart-number")[0].innerHTML = cart.cartItems.length;
                 this.setState({
                     cart,
                 });
@@ -81,6 +81,7 @@ class CheckoutCart extends Component
         // {
         //     this.showCartItem(this.state.cart.cartItems[i]);
         // }
+       
         const cartItems = this.state.cart.cartItems || [];
         return (
             

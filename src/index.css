@@ -328,3 +328,13 @@ input, .login-input {
  .form-login {
    margin:100px;
  }
+
+ .cart-number {
+  position: initial;
+  margin: 0;
+  margin-top: 20px;
+ }
+
+ .cart-icon {
+   margin-right:0px;
+ }

@@ -41,9 +41,10 @@ class ProductDetail extends Component {
     openModal = () => this.setState({ isOpen: true });
 
     addToCart = () => {
+        document.getElementsByClassName("cart-number")[0].innerHTML = 1;
         this.setState({ cart: false });
         const pricePerUnit = this.state.repos[0].variant_price;
-        const qty = 2;
+        const qty = 1;
         const productId = this.state.repos[0].product_id;
         const brand = this.state.repos[0].brand;
         const title = this.state.repos[0].title;

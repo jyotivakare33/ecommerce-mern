@@ -1,12 +1,14 @@
 import logo from '../images/header-logo.png';
 import cart from '../images/cart.png';
 import Login from './Login';
+import { Badge } from 'react-bootstrap';
 
 function Header() {
     return (
         <div>
             <header>
-                <img src={logo} className="logo" alt="logo" />
+                <a href="/">
+                <img src={logo} className="logo" alt="logo" /></a>
                 <a href="/list/men" className="nav-links">
                     Men
                 </a>
@@ -21,7 +23,10 @@ function Header() {
                 </a>
                 <Login />
                 <a href="/checkout">
-                    <img src={cart} alt="" className="header-right" />
+                <Badge variant="info" className="cart-number header-right">
+                    0
+                </Badge>
+                    <img src={cart} alt="" className="cart-icon header-right" /> 
                 </a>
             </header>
         </div>
