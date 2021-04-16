@@ -76,7 +76,7 @@ class LoginPage extends Component {
             <>
             <div className="content main-login-div">
                 <div className="content loginPage">
-                        <Form>
+                        <Form className="form-login">
                         <h1 className="login-header">Login</h1>
                             <Form.Group>
                             <Form.Label className="login-labels">Email ID: </Form.Label>
