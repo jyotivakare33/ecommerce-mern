@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from '../images/header-logo.png';
 import cart from '../images/cart.png';
+import logout from '../images/logout.png';
 import Login from './Login';
 import { Badge } from 'react-bootstrap';
 
@@ -15,6 +16,16 @@ class Header extends Component {
         };
     }
 
+    logout = () => {
+
+        const request = new Request('api/sessions/me', {
+            method: 'DELETE',
+        });
+        fetch(request)
+            .then((res) => res.json())
+            .then((json) => console.log(json));
+    };
+
     componentDidMount() {
         const request = new Request('api/carts/me', {
             method: 'GET',
@@ -25,7 +36,6 @@ class Header extends Component {
         fetch(request)
             .then((response) => response.json())
             .then((cart) => {
-                console.log(cart)
                 if(cart.cartItems !== undefined) {
                     document.getElementsByClassName("cart-number")[0].innerHTML = cart.cartItems.length;
                 }
@@ -58,6 +68,9 @@ class Header extends Component {
                     0
                 </Badge>
                     <img src={cart} alt="" className="cart-icon header-right" /> 
+                </a>
+                <a onClick={this.logout} href="#">
+                    <img src={logout} alt="" className="header-right" /> 
                 </a>
             </header>
         </div>

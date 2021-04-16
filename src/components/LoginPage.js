@@ -38,7 +38,7 @@ class LoginPage extends Component {
             body: JSON.stringify({ email, password }),
         });
         fetch(request).then(res => {
-        if (res.status === 200) {
+        if (res.status === 201) {
             return (
                 window.location = "/address"
             );
@@ -47,7 +47,8 @@ class LoginPage extends Component {
         }});  
     };
 
-    closeModalLogin = () => {
+    closeModalLogin = (e) => {
+        e.preventDefault()
         const { email } = this.state;
         const { password } = this.state;
         console.log(email, password);
@@ -62,14 +63,16 @@ class LoginPage extends Component {
             body: JSON.stringify({ email, password }),
         });
         fetch(request).then(res => {
-            if (res.status === 200) {
+            if (res.status === 201) {
                 return (
                     window.location = "/address"
                 );
             } else{
                 window.location = "/login"
-        }}); 
+            }});
     };
+
+
 
     render() {
         return (

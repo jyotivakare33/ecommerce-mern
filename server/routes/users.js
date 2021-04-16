@@ -38,6 +38,7 @@ router.post('/', (req, res) => {
             const user = new User({ _id: userCredential.id, email });
             console.log('Before creating User');
             user.save().then(() => {
+                req.session.userId = userCredential.id;
                 res.status(201).send({ id: userCredential.id });
             });
             console.log('User created');
@@ -63,12 +64,11 @@ router.get('/:userId', (req, res) => {
     });
 });
 
-router.post('/isLogged', auth.authenticate, (req, res) => {
+router.post('/isLogged', (req, res) => {
     if (!req.session.userId) {
-        res.send(201).send({ msg: "Not logged in"});
-    } else {
-        res.send(201).send({ msg: "logged in"});
+        res.send(401).send({ error: "Not Logged In"});
     }
+    res.status(201).send({msg:'logged in'});
 });
 
 router.put('/me', auth.authenticate, (req, res) => {
