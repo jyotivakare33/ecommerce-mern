@@ -229,7 +229,8 @@ input, .login-input {
 .add_address {
   background-color: #ff3f6c;
   border: none;
-  width: 95%;
+  width:400px;
+  max-width: 400px;
   padding: 10px;
   font-weight: 600;
   border-radius: 12px;
@@ -245,8 +246,7 @@ input, .login-input {
 }
 
 .product_cards {
-  width:75%;
-  float:right;
+  margin-left:100px;
 }
 
 .badge {

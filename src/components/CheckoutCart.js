@@ -55,9 +55,15 @@ class CheckoutCart extends Component
                                     <span>
                                         <strong>Rs: {cartItem.pricePerUnit}</strong>
                                     </span>
-                                    <Button variant="outline-success" className="select">
-                                        M
-                                    </Button>{' '}
+                                    <div>
+                                        <span>Quantity</span>
+                                    <select>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                    </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
