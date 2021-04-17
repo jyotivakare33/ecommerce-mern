@@ -63,6 +63,7 @@ router.post('/', (req, res) => {
                     cartExists = true;
                     oldPrice = cart.cartItems[i].qty*cart.cartItems[i].pricePerUnit;
                     cart.cartItems[i].qty = cart.cartItems[i].qty + 1;
+                    //cart.cartItems[i].qty = cartItem.qty; //TODO: quantity update
                     newQty = cart.cartItems[i].qty;
                     console.log(oldPrice);
                     console.log(cart.totalAmount)

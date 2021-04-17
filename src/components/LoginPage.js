@@ -23,7 +23,8 @@ class LoginPage extends Component {
     };
 
 
-    closeModalSignup = () => {
+    closeModalSignup = (e) => {
+        e.preventDefault()
         const { email } = this.state;
         const { password } = this.state;
         console.log(email, password);
