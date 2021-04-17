@@ -4,6 +4,7 @@ import cart from '../images/cart.png';
 import logout from '../images/logout.png';
 import Login from './Login';
 import { Badge } from 'react-bootstrap';
+import AlertMessage from './AlertMessage';
 
 class Header extends Component {
 
@@ -12,6 +13,7 @@ class Header extends Component {
         super(props);
         this.state = {
             cart: {},
+            alert:false,
             
         };
     }
@@ -24,6 +26,11 @@ class Header extends Component {
         fetch(request)
             .then((res) => res.json())
             .then((json) => console.log(json));
+            this.setState({
+                alert: true
+            });
+        document.getElementsByClassName('logout_icon ')[0].style.display = "none"
+        document.getElementsByClassName('login_icon')[0].style.display = "block"
     };
 
     componentDidMount() {
@@ -43,6 +50,25 @@ class Header extends Component {
                     cart,
                 });
             });
+            const requestLogin = new Request('api/users/isLogged', {
+                method: 'POST',
+                headers: new Headers({
+                    'Content-Type': 'application/json',
+                    'Access-Control-Allow-Origin': '*',
+                    'Access-Control-Allow-Credentials': true,
+                }),
+            });
+            fetch(requestLogin).then(res => {
+                if (res.status === 201) {
+                    return (
+                        document.getElementsByClassName('login_icon')[0].style.display = "none"
+                    );
+                } else{
+                    return (
+                        document.getElementsByClassName('logout_icon ')[0].style.display = "none"
+                    );
+                }     
+            }) 
     }
     render() {
     return (
@@ -70,8 +96,9 @@ class Header extends Component {
                     <img src={cart} alt="" className="cart-icon header-right" /> 
                 </a>
                 <a onClick={this.logout} href="#">
-                    <img src={logout} alt="" className="header-right" /> 
+                    <img src={logout} alt="" className="header-right logout_icon" /> 
                 </a>
+                {this.state.alert ?<AlertMessage msg={"User Logged Out"} type="warning"/> :''}
             </header>
         </div>
     );

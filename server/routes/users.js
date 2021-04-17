@@ -66,9 +66,14 @@ router.get('/:userId', (req, res) => {
 
 router.post('/isLogged', (req, res) => {
     if (!req.session.userId) {
-        res.send(401).send({ error: "Not Logged In"});
+        res.status(401).send({error: "Not Logged In"});
+        return;
     }
-    res.status(201).send({msg:'logged in'});
+
+    if (req.session.userId) {
+        res.status(201).send({msg: "Logged In"});
+        return;
+    }
 });
 
 router.put('/me', auth.authenticate, (req, res) => {

@@ -1,7 +1,6 @@
 /* eslint-disable no-console */
 import { withRouter } from 'react-router-dom';
 import Magnifier from 'react-magnifier';
-import { Button } from 'react-bootstrap';
 import React, { Component } from 'react';
 
 class ProductDetail extends Component {
