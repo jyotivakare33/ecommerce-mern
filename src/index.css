@@ -140,7 +140,7 @@ input, .login-input {
 
 .product_info {
   display: inline-flex;
-  margin: 100px;
+  margin: 30px;
 }
 
 .description {
@@ -259,7 +259,9 @@ input, .login-input {
 
 .margin-40 {
   margin-left: 40px;
-  width: 60%;
+  margin-left: 40px;
+    width: 500px;
+    line-height: 40px;
 }
 
 .brand_name {
@@ -337,4 +339,11 @@ input, .login-input {
 
  .cart-icon {
    margin-right:0px;
+ }
+
+ .product_images {
+   display: grid;
+   grid-template-columns: repeat(2,minmax(0,1fr));
+   margin:20px;
+   width: 1000px;
  }

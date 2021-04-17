@@ -65,8 +65,14 @@ class ProductDetail extends Component {
 
     render() {
         const peopleCards = this.state.repos.map((person) => ( 
+            <div>
             <div className="product_info">
-                <Magnifier src={person.images} width={700} />
+                <div className="product_images">
+                <Magnifier src={person.images.split(" | ")[0]}  />
+                <Magnifier src={person.images.split(" | ")[2]}  />
+                <Magnifier src={person.images.split(" | ")[1]}  />
+                <Magnifier src={person.images.split(" | ")[3]}  />
+                </div>
                 <div>
                     <h1 className="margin-40 brand_name">{person.brand}</h1>
                     <h2 className="margin-40 title">{person.title}</h2>
@@ -76,7 +82,7 @@ class ProductDetail extends Component {
                         Rs.<del>{person.variant_compare_at_price}</del>
                     </span>
                     <p>
-                        <span class="taxes margin-40">inclusive of all taxes</span>
+                        <span className="taxes margin-40">inclusive of all taxes</span>
                     </p>
                     <h5 className="margin-40 options">DELIVERY OPTIONS </h5>
                     <p className="margin-40">
@@ -93,6 +99,10 @@ class ProductDetail extends Component {
                         Go To Cart
                     </button> }
                 </div>
+                
+            </div>
+            <div>
+            </div>
             </div>
         ));
 
