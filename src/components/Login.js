@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import React, { Component } from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
+import { Modal, Form } from 'react-bootstrap';
 import user from '../images/user.png';
 
 class login extends Component {
@@ -94,12 +94,11 @@ class login extends Component {
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>
-                        <Button variant="primary" type="submit" onClick={this.closeModalLogin}>
-                            Submit
-                        </Button>
-                        <Button variant="primary" type="submit" onClick={this.closeModalSignup}>
-                            Sign Up
-                        </Button>
+                    <button type="submit" className="add_address login-modal" onClick={this.closeModalLogin}>
+                            Login </button>
+                        <button type="submit" className="add_address login-modal" onClick={this.closeModalSignup}>
+                            SignUp
+                        </button>
                     </Modal.Footer>
                 </Modal>
             </>

@@ -335,6 +335,7 @@ input, .login-input {
   position: initial;
   margin: 0;
   margin-top: 20px;
+  padding: 5px;
  }
 
  .cart-icon {
@@ -348,3 +349,7 @@ input, .login-input {
    width: 1000px;
    grid-gap: 30px;
  }
+
+.login-modal {
+  width: 100px;
+}
