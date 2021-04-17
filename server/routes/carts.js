@@ -48,25 +48,41 @@ router.post('/', (req, res) => {
     }
 
     let cartExists = false;
-    const updateQuery = {};
-    let productId;
+    let newQty ;
+    let totalAmount;
+    let oldPrice;
 
     Cart.findOne({ sessionId }).then( cart => {
         //if cart already exists
         if (cart) 
         {
             console.log('Cart already exists');
-            var oldQty ;
             for (let i = 0; i < cart.cartItems.length; i++) { 
                 if(cart.cartItems[i].productId === cartItem.productId)
                 {
                     cartExists = true;
+                    oldPrice = cart.cartItems[i].qty*cart.cartItems[i].pricePerUnit;
                     cart.cartItems[i].qty = cart.cartItems[i].qty + 1;
-                    cart.totalAmount = cart.totalAmount + cart.cartItems[i].qty*cart.cartItems[i].pricePerUnit - oldQty*cart.cartItems[i].pricePerUnit;                   
-                    updateQuery.qty = cart.cartItems[i].qty;
-                    updateQuery.totalAmount = cart.totalAmount;
-                    productId = cart.cartItems[i].productId
-                    console.log(updateQuery);
+                    newQty = cart.cartItems[i].qty;
+                    console.log(oldPrice);
+                    console.log(cart.totalAmount)
+                    cart.totalAmount = cart.totalAmount + newQty*cart.cartItems[i].pricePerUnit - oldPrice ;          
+                    totalAmount = cart.totalAmount;
+                    console.log(newQty);
+                    console.log(totalAmount);
+                    cart.cartItems[i].remove();
+                    cart.save().then(() => {
+                        cart.totalAmount = totalAmount;
+                        cart.cartItems.push({productId: cartItem.productId, qty:newQty, pricePerUnit:cartItem.pricePerUnit,brand:cartItem.brand,title:cartItem.title, images:cartItem.images});
+                        console.log(cart);
+                        cart.save().then(() => {
+                            res.status(204).send({ id: sessionId });
+                        }).catch((err) => {
+                            res.status(500).send({err: err});
+                        });
+                    }).catch((err) => {
+                        res.status(500).send({err: err});
+                    });                 
                 }
             }
             if(!cartExists) {
@@ -79,13 +95,6 @@ router.post('/', (req, res) => {
                     res.status(204).send({ id: sessionId });
                 }).catch((e) => {
                     res.status(500).send({err: "Error while adding item to cart"});
-                });
-            }
-            if(cartExists) {
-                Cart.updateOne({ _id: productId }, updateQuery).then(() => {
-                    res.status(201).send({msg:'Updated'});
-                }).catch((e) => {
-                    res.status(500).send({ error: e });
                 });
             }
         } else {
