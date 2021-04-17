@@ -346,4 +346,5 @@ input, .login-input {
    grid-template-columns: repeat(2,minmax(0,1fr));
    margin:20px;
    width: 1000px;
+   grid-gap: 30px;
  }
