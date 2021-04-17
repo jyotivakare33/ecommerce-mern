@@ -68,10 +68,10 @@ class ProductDetail extends Component {
             <div>
             <div className="product_info">
                 <div className="product_images">
-                <Magnifier src={person.images.split(" | ")[0]}  />
-                <Magnifier src={person.images.split(" | ")[2]}  />
-                <Magnifier src={person.images.split(" | ")[1]}  />
-                <Magnifier src={person.images.split(" | ")[3]}  />
+                { person.images.split(" | ")[0] ?<Magnifier src={person.images.split(" | ")[0]}  /> :""}
+                { person.images.split(" | ")[2] ?<Magnifier src={person.images.split(" | ")[2]}  /> :""}
+                { person.images.split(" | ")[1] ?<Magnifier src={person.images.split(" | ")[1]}  /> :""}
+                { person.images.split(" | ")[3] ?<Magnifier src={person.images.split(" | ")[3]}  /> :""}
                 </div>
                 <div>
                     <h1 className="margin-40 brand_name">{person.brand}</h1>
