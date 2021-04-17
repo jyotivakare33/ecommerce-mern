@@ -5,6 +5,7 @@ const UserCredential = require('../models/user-credential');
 const User = require('../models/user');
 const bcrypt = require('bcryptjs');
 const Cart = require('../models/cart');
+const { update } = require('../models/user-credential');
 
 //Get a cart
 router.get('/me',(req,res) => {
@@ -13,7 +14,6 @@ router.get('/me',(req,res) => {
         return;
     }
     const sessionId = req.session.id;
-    console.log(sessionId);
     Cart.findOne({ sessionId: sessionId }).then(cart => {
         if(cart)
         {
@@ -47,6 +47,10 @@ router.post('/', (req, res) => {
         return;
     }
 
+    let cartExists = false;
+    const updateQuery = {};
+    let productId;
+
     Cart.findOne({ sessionId }).then( cart => {
         //if cart already exists
         if (cart) 
@@ -56,39 +60,47 @@ router.post('/', (req, res) => {
             for (let i = 0; i < cart.cartItems.length; i++) { 
                 if(cart.cartItems[i].productId === cartItem.productId)
                 {
-                    oldQty = cart.cartItems[i].qty;
-                    console.log(oldQty);
-                    cart.cartItems[i].qty++;
-                    cart.totalAmount = cart.totalAmount + cart.cartItems[i].qty*cart.cartItems[i].pricePerUnit - oldQty*cart.cartItems[i].pricePerUnit;
-                    
-                } else {
-                    console.log(cartItem);
-                    console.log("cartitems qty");
-                    cart.cartItems.push({productId: cartItem.productId, qty:1, pricePerUnit:cartItem.pricePerUnit,brand:cartItem.brand,title:cartItem.title, images:cartItem.images});
-                    console.log(cart.cartItems);
-                    cart.totalAmount = cart.totalAmount + cartItem.qty*cartItem.pricePerUnit;
+                    cartExists = true;
+                    cart.cartItems[i].qty = cart.cartItems[i].qty + 1;
+                    cart.totalAmount = cart.totalAmount + cart.cartItems[i].qty*cart.cartItems[i].pricePerUnit - oldQty*cart.cartItems[i].pricePerUnit;                   
+                    updateQuery.qty = cart.cartItems[i].qty;
+                    updateQuery.totalAmount = cart.totalAmount;
+                    productId = cart.cartItems[i].productId
+                    console.log(updateQuery);
                 }
             }
-            cart.save().then(() => {
-                res.status(201).send({ id: sessionId });
-            }).catch(() => {
-                res.status(500).send({err: "Error while adding item to cart"});
-            });
-            
-            return;
+            if(!cartExists) {
+                console.log(cartItem);
+                console.log("cartitems qty");
+                cart.cartItems.push({productId: cartItem.productId, qty:1, pricePerUnit:cartItem.pricePerUnit,brand:cartItem.brand,title:cartItem.title, images:cartItem.images});
+                cart.totalAmount = cart.totalAmount + cartItem.qty*cartItem.pricePerUnit;
+                console.log(cart);
+                cart.save().then(() => {
+                    res.status(204).send({ id: sessionId });
+                }).catch((e) => {
+                    res.status(500).send({err: "Error while adding item to cart"});
+                });
+            }
+            if(cartExists) {
+                Cart.updateOne({ _id: productId }, updateQuery).then(() => {
+                    res.status(201).send({msg:'Updated'});
+                }).catch((e) => {
+                    res.status(500).send({ error: e });
+                });
+            }
+        } else {
+             //if cart doesn't exist
+            console.log('Cart DOES NOT exists');
+            console.log(cartItem)
+             const cartEntity = new Cart({ sessionId, cartItems: cartItem, totalAmount:cartItem.qty*cartItem.pricePerUnit});
+     
+             cartEntity.save().then(() => {
+                 res.status(201).send({ id: sessionId });
+     
+             });
         }
-
-       //if cart doesn't exist
-       console.log('Cart DOES NOT exists');
-       console.log(cartItem)
-        const cartEntity = new Cart({ sessionId, cartItems: cartItem, totalAmount:cartItem.qty*cartItem.pricePerUnit});
-
-        cartEntity.save().then(() => {
-            res.status(201).send({ id: sessionId });
-
-        });
-    }).catch(() => {
-        res.status(500).send({ error: "Internal Server Error" });
+    }).catch((e) => {
+        res.status(500).send({ error: e });
     });
 })
 
