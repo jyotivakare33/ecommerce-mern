@@ -49,7 +49,8 @@ class CheckoutCart extends Component
                             <div className="col-md-8 checkout-body">
                                 <div className="card-body">
                                     <div>
-                                        <h5 className="card-title">{cartItem.brand}</h5>
+                                        <a href= {`/${cartItem.productId}`}>
+                                        <h5 className="card-title">{cartItem.brand}</h5> </a>
                                     </div>
                                     <p className="card-text">{cartItem.title}</p>
                                     <span>
